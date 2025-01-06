@@ -1,0 +1,46 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+ .heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Project Card Base Styles */
+.projectCard {
+  position: relative;
+  overflow: hidden; /* Ensures the image fits properly within the container */
+  border-radius: 8px; /* Consistent rounded corners */
+  background-color: var(--ifm-background-color); /* Default background color (light mode) */
+  border: 1px solid var(--ifm-color-emphasis-200); /* Light theme border */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for light mode */
+}
+
+.projectImage {
+  width: 100%; /* Makes the image fill the entire width of the container */
+  height: 100%; /* Makes the image fill the entire height of the container */
+  object-fit: cover; /* Ensures the image covers the box, maintaining its aspect ratio */
+}
+
+/* Dark Mode Specific Styles */
+:root[data-theme='dark'] .projectCard {
+  background-color: #242526; /* Custom dark mode background */
+  border: 1px solid #242526; /* Dark mode border matches the background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Slightly darker shadow for dark mode */
+}
