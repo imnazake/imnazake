@@ -1,5 +1,7 @@
 ---
-sidebar_position: 3
+id: creating-new-equipment
+title: Creating New Equipment Items
+sidebar_label: New Equipment Items
 ---
 
 # Creating New Equipment Items
@@ -124,4 +126,82 @@ Finally, configure how the equipment should spawn for the player, including acto
 
 ---
 
-By following these steps, you can create fully functional and modular equipment items for your game.
+:::note
+Important for the equipment to work properly
+:::
+
+### Configuring Equipment Attachment to Your Character/Pawn
+
+To ensure that the plugin can find and attach equipment to the correct mesh in your character or pawn, follow these steps:
+
+1. **Select the Mesh to Attach Equipment**:
+   - Open your **character** or **pawn class**.
+   - Identify the mesh you want to use for attaching equipment. Common examples include `FirstPersonMesh`, `ThirdPersonMesh`, or any other custom mesh you wish to use.
+
+2. **Add a Component Tag**:
+   - For the mesh you've chosen, add a **component tag** to it. This tag is used by the plugin to identify and attach the equipment correctly.
+   - Ensure that the tag you assign matches the tag defined in the equipment's configuration. This alignment ensures the plugin knows which mesh the equipment should be attached to.
+
+3. **Implement the `IGameplayEquipmentInterface`**:
+   - In order to facilitate the process of finding and interacting with the mesh by tag, implement the `IGameplayEquipmentInterface` in your character or pawn class. This interface provides the necessary functionality to look up and use the mesh based on the assigned component tag.
+
+4. **Example Implementation**:
+   - Refer to the image below for a visual representation of how the mesh and tag should be set up.
+   - You can find an example implementation in the code below, which demonstrates how to use the tag and interface for attaching equipment to the correct mesh.
+
+![Character Mesh Component Tags](./images/character-mesh-component-tags.png)
+
+
+```cpp
+UMeshComponent* AMyCharacter::GetMeshComponentByTag(const FName ComponentTag) const
+{
+	return Cast<UMeshComponent>(FindComponentByTag(UMeshComponent::StaticClass(), ComponentTag));
+}
+
+void AMyCharacter::OnItemEquipped(const UGameplayItemDefinition* Item)
+{
+	if (Item)
+	{
+		// You can also change equipment meshes here if you want to
+		
+		const TSubclassOf<UAnimInstance> AnimLayer_FirstPerson = Item->GetFragmentByClass<UGameplayItemFragment_Equipment>()->GetEquipmentDefinition()->GetAnimationLayerInfoByTag(GameplayContainerTags::TAG_Perspective_FirstPerson_Equipment_AnimationLayer_Equipped).AnimationLayerClass;
+		const TSubclassOf<UAnimInstance> AnimLayer_ThirdPerson = Item->GetFragmentByClass<UGameplayItemFragment_Equipment>()->GetEquipmentDefinition()->GetAnimationLayerInfoByTag(GameplayContainerTags::TAG_Perspective_ThirdPerson_Equipment_AnimationLayer_Equipped).AnimationLayerClass;
+
+		if (UAnimInstance* MyAnimInstance = FirstPersonMesh->GetAnimInstance())
+		{
+			MyAnimInstance->LinkAnimClassLayers(AnimLayer_FirstPerson);
+		}
+		
+		if (const USkeletalMeshComponent* MyMesh = GetMesh())
+		{
+			if (UAnimInstance* MyAnimInstance = MyMesh->GetAnimInstance())
+			{
+				MyAnimInstance->LinkAnimClassLayers(AnimLayer_ThirdPerson);
+			}
+		}
+	}
+}
+
+void AMyCharacter::OnItemUnequipped(const UGameplayItemDefinition* Item)
+{
+	if (Item)
+	{
+		// You can also change equipment meshes here if you want to
+
+		const TSubclassOf<UAnimInstance> AnimLayer_FirstPerson = Item->GetFragmentByClass<UGameplayItemFragment_Equipment>()->GetEquipmentDefinition()->GetAnimationLayerInfoByTag(GameplayContainerTags::TAG_Perspective_FirstPerson_Equipment_AnimationLayer_Unequipped).AnimationLayerClass;
+		const TSubclassOf<UAnimInstance> AnimLayer_ThirdPerson = Item->GetFragmentByClass<UGameplayItemFragment_Equipment>()->GetEquipmentDefinition()->GetAnimationLayerInfoByTag(GameplayContainerTags::TAG_Perspective_ThirdPerson_Equipment_AnimationLayer_Unequipped).AnimationLayerClass;
+
+		if (UAnimInstance* MyAnimInstance = FirstPersonMesh->GetAnimInstance())
+		{
+			MyAnimInstance->LinkAnimClassLayers(AnimLayer_FirstPerson);
+		}
+		
+		if (const USkeletalMeshComponent* MyMesh = GetMesh())
+		{
+			if (UAnimInstance* MyAnimInstance = MyMesh->GetAnimInstance())
+			{
+				MyAnimInstance->LinkAnimClassLayers(AnimLayer_ThirdPerson);
+			}
+		}
+	}
+}

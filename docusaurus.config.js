@@ -88,8 +88,8 @@ const config = {
             label: 'Documentation',
           },
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            to: '/blog',
+            
             position: 'left',
             label: 'Blogs',
           },                     
