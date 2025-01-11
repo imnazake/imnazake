@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunknazake=self.webpackChunknazake||[]).push([[1903],{1912:a=>{a.exports=JSON.parse('{"blogBasePath":"/imnazake/blog","blogTitle":"Blog","authorsListPath":"/imnazake/blog/authors"}')}}]);
