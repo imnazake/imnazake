@@ -20,8 +20,8 @@ const config = {
   baseUrl: '/',
 
   // GitHub Pages deployment config
-  organizationName: 'imnazake', // Your GitHub username
-  projectName: 'imnazake', // Your repo name
+  organizationName: '', // Your GitHub username
+  projectName: '', // Your repo name
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
