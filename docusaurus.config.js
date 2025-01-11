@@ -17,10 +17,10 @@ const config = {
   // Set the production URL of your site here
   url: 'https://imnazake.github.io',
   // Set the baseUrl to root ('/') for serving without subdirectories
-  baseUrl: '/',
+  baseUrl: '/imnazake/',
 
   // GitHub Pages deployment config
-  organizationName: 'imnazake.github.io', // Your GitHub username
+  organizationName: 'imnazake', // Your GitHub username
   projectName: 'imnazake', // Your repo name
   trailingSlash: false,
 
