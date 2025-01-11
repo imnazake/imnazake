@@ -2,6 +2,8 @@
 sidebar_position: 3
 ---
 
+# Creating New Slots
+
 This guide walks you through the process of creating and configuring new container slots in your game using the **Gameplay Containers Plugin**. Slots are essential for organizing and managing items within a container.
 
 ## 1. Create a Container Slot Definition
