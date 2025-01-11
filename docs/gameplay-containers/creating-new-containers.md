@@ -2,6 +2,7 @@
 id: creating-new-containers
 title: Creating New Containers
 sidebar_label: New Containers
+sidebar_position: 3
 ---
 
 # Creating New Containers

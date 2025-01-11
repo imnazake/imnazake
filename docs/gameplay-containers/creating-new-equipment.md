@@ -2,6 +2,7 @@
 id: creating-new-equipment
 title: Creating New Equipment Items
 sidebar_label: New Equipment Items
+sidebar_position: 3
 ---
 
 # Creating New Equipment Items
