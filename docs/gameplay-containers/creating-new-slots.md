@@ -1,7 +1,4 @@
 ---
-id: creating-new-container-slots
-title: Creating New Container Slots
-sidebar_label: New Container Slots
 sidebar_position: 3
 ---
 

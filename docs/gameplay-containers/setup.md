@@ -1,7 +1,4 @@
 ---
-id: setup-gameplay-containers
-title: Setup Gameplay Containers
-sidebar_label: Setup GameplayContainers Plugin
 sidebar_position: 3
 ---
 

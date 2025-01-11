@@ -1,7 +1,4 @@
 ---
-id: creating-new-items
-title: Creating New Items
-sidebar_label: New Items
 sidebar_position: 3
 ---
 
