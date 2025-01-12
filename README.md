@@ -1,2 +1,2 @@
 > [!NOTE]  
-> [Website](https://imnazake.github.io/imnazake/docs/)
+> [Website](https://imnazake.github.io/imnazake/)
