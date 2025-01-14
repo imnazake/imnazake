@@ -28,6 +28,15 @@ const sidebars = {
       items: [
         {
           type: 'category',
+          label: 'Unify',
+          collapsed: false,
+          items: [
+            'unify/features',
+            'unify/getting-started',
+          ],
+        },
+        {
+          type: 'category',
           label: 'Gameplay Containers',
           collapsed: false,
           items: [

@@ -107,7 +107,7 @@ const config = {
               },
               {
                 label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                href: 'https://discordapp.com/invite/AKavNKeDmd',
               },  
             ],
           },
@@ -116,7 +116,7 @@ const config = {
             items: [
               {
                 label: 'Youtube',
-                href: 'https://www.youtube.com/@itsnazake',
+                href: 'https://www.youtube.com/@imnazake',
               },          
               {
                 label: 'Twitter (X)',
