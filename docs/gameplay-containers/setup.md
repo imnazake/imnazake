@@ -437,3 +437,77 @@ void AMyCharacter::OnItemUnequipped(const UGameplayItemDefinition* Item)
 :::note
 Make sure your blueprints for **Character** and **PlayerState** are using the C++ classes we just created. If not reparent them to use the C++ classes.
 :::
+
+## Step 7: Blueprint Configuration
+
+- Starting with the inventory component make sure the container definition for each component is selected correctly.
+
+![Config](./images/inventory_config_01.png)
+
+![Config](./images/inventory_container_config.png)
+![Config](./images/hotbar_container_config.png)
+![Config](./images/equipment_container_config.png)
+
+:::note
+Startup Items allows you to specify which items should be added to the container initially when the game starts.
+You can also check advanced section to configure more advanced settings.
+:::
+
+![Config](./images/advanced_inventory_config.png)
+
+- Now, let's add the input mapping context of the Gameplay Container plugin to the player. I do this in the Begin Play function for this project, adding it after the default player mapping context.
+
+![Config](./images/gc_input_config.png)
+
+- Now, let's implement the Hotbar component input actions. By default, the Hotbar has 6 slots, so I've added 6 input actions. You can adjust the number of slots and input actions as needed.
+
+:::note
+the slot index always starts from 0 so for the first slot its 0 and last slot is (N - 1) and N is the number of slots.
+:::
+
+:::info
+The ToggleSlot function is maintained for older plugin versions; the new function is now called ToggleSlotByIndex.
+:::
+
+![Config](./images/hotbar_input_config.png)
+
+- Next, go to the `Gameplay Containers` plugin, navigate to `Core > Abilities` folder, and verify the abilities settings. Make sure the abilities blueprints inherit from your project's main Gameplay Ability class. If you don't have a main Gameplay Ability class for your project, you can reparent them to use the default Gameplay Ability class.
+
+:::info
+I created a script to reparent all selected gameplay abilities blueprints located in `Plugins > GameplayContainers > Editor > Scripts`.
+:::
+
+- To use the script, select all gameplay abilities, right-click, choose "Scripted Asset Actions," select "Reparent Selected Blueprints," then choose the new parent class and press OK.
+
+![Config](./images/reparent_bulk_script.png)
+
+- Next, give all the abilities from the Gameplay Containers plugin to your player character to enable usage of the inventory, hotbar, equipment components, etc.
+
+- Create a variable of type Gameplay Ability Class and make it an array. This variable will hold all the abilities that should be added to our player's Ability System component on Begin Play.
+
+- Add all the ability from `GameplayContainers` plugin in `Core/Abilities` to this array of gameplay ability classes.
+
+- On BeginPlay in PlayerState (or wherever the Ability System Component is), use a foreach loop to call the GiveAbility function for each element in the array.
+
+:::info
+If your game project utilizes ability sets, I have a script that can assist in adding all abilities to the set, provided its structure matches that of the demo project. You can find the script in the `GameplayContainer` plugin under `Editor > Scripts` in the `Utility_AddSelectedAbilitiesToAbilitySet` folder.
+:::
+
+- This script example demonstrates how to populate the ability set with gameplay container abilities, which you can then grant to your player.
+
+![Config](./images/ability_set_script.png)
+
+:::note
+It is recommended to edit the script to match your project's specific ability set, as it is initially configured for the demo project. Simply replace the default class with your project's class for ability sets.
+:::
+
+- Select your ability set data asset and click OK to automatically populate the abilities.
+
+## Step 8: Testing 
+
+- Now, simply add the `W_Hotbar` widget to your HUD and set up a button that toggles the `W_InventoryWindow` widget to view your inventory and other containers.
+
+## Unify Demo Project
+
+- Check out the unify demo project for detailed information and simplified testing setup.
+[Click Here](https://github.com/imnazake/Unify)
