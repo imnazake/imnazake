@@ -17,6 +17,7 @@ sidebar_position: 3
 - **Item Details Menu:** Added a new menu for viewing detailed information about items, potentially replacing tooltip widgets.
 
 ## Improvements
+  **Improved Input Detection:** Enhanced input detection for slot context menus, attachment menus, and all split stack operations.
 - **Naming Changes:**  
   - Updated attachment-related names for clarity:  
     - `Attachments` → `Attachment Slots`.  
