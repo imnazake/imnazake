@@ -4,6 +4,43 @@ sidebar_position: 3
 
 # Change Logs
 
+# Version 1.4
+
+## Features
+- **Overflow Handling:** Implemented overflow handling for items to better manage item capacities.
+- **Equipment Replication:** Improved equipment replication between clients and the server, including callbacks for linking animation layers and playing montages.
+- **Container Access Permissions:** Added container access permissions and streamlined user registration logic.
+- **Attachment System Update:** Moved the attachment widget to a new full-screen menu to enable dynamic item combining.
+- **Sorting Functionality:**  
+  - Added a sorting order parameter for improved customization.  
+  - Introduced two new sorting options: **Sort by Type** and **Sort by Quantity**.
+- **Item Details Menu:** Added a new menu for viewing detailed information about items, potentially replacing tooltip widgets.
+
+## Improvements
+- **Naming Changes:**  
+  - Updated attachment-related names for clarity:  
+    - `Attachments` → `Attachment Slots`.  
+    - `Default Attachments` → `Startup Attachments`.  
+  - Renamed tasks for better understanding:  
+    - `DetachItems` → `DetachAllItems`.  
+    - `TransferItems` → `TransferAllItems`.
+- **Item Definition Updates:**  
+  - Removed mesh and material selection options from the world fragment in item definitions. These should now be configured directly in the world item actor or a shared world item actor class.  
+  - Removed the common properties data asset; instead, each item should have its own world item class or share one as needed.
+- **Equipment Mesh Interface:**  
+  - Created an interface to retrieve equipment meshes from character classes, allowing support for varying meshes.  
+  - Added a function to fetch meshes by tag using existing component tags across all actor components.
+
+## Bug Fixes
+- **Hotbar Callback:** Fixed the `OnActiveSlotChanged` Blueprint callback to provide both the active slot and the last observed slot, as the previous pin name implied the wrong behavior.
+- **Ability Duplication:** Fixed an issue where abilities granted by equipment were not revoked properly and were being duplicated upon re-granting.
+
+## Maintenance
+- Removed the **common properties data asset** to simplify item configuration.  
+- Streamlined world item configurations to allow for unique or shared item actors as appropriate.
+
+---
+
 ## Version 1.3
 
 ### **Features**
