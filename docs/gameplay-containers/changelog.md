@@ -6,8 +6,9 @@ sidebar_position: 3
 
 ## Version 1.4
 
-### **News**
-- **Plugin Support**: Unreal Engine 5.2 users will no longer receive plugin updates.
+:::info
+Unreal Engine 5.2 users will no longer receive plugin updates.
+:::
 
 ### Features
 - **Overflow Handling:** Implemented overflow handling for items to better manage item capacities.
