@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Change Logs
 
-# Version 1.4
+## Version 1.4
 
 ## Features
 - **Overflow Handling:** Implemented overflow handling for items to better manage item capacities.
