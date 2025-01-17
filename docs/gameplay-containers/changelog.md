@@ -6,6 +6,9 @@ sidebar_position: 3
 
 ## Version 1.4
 
+### **News**
+- **Plugin Support**: Unreal Engine 5.2 users will no longer receive plugin updates.
+
 ### Features
 - **Overflow Handling:** Implemented overflow handling for items to better manage item capacities.
 - **Equipment Replication:** Improved equipment replication between clients and the server, including callbacks for linking animation layers and playing montages.
@@ -17,7 +20,7 @@ sidebar_position: 3
 - **Item Details Menu:** Added a new menu for viewing detailed information about items, potentially replacing tooltip widgets.
 
 ### Improvements
-  **Improved Input Detection:** Enhanced input detection for slot context menus, attachment menus, and all split stack operations.
+- **Improved Input Detection:** Enhanced input detection for slot context menus, attachment menus, and all split stack operations.
 - **Naming Changes:**  
   - Updated attachment-related names for clarity:  
     - `Attachments` → `Attachment Slots`.  
