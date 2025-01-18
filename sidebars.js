@@ -33,6 +33,7 @@ const sidebars = {
           items: [
             'unify/features',
             'unify/getting-started',
+            'unify/gameplay-containers-setup'
           ],
         },
         {
@@ -47,6 +48,7 @@ const sidebars = {
             'gameplay-containers/creating-new-equipment',
             'gameplay-containers/creating-new-containers',
             'gameplay-containers/creating-new-slots',
+            'gameplay-containers/creating-new-permissions'
           ],
         },
         {

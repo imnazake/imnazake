@@ -51,6 +51,12 @@ This plugin requires the **Gameplay Ability System** to be set up in your projec
 ### **Dynamic Slot Management**
 - Add or remove container slots dynamically during gameplay to accommodate changing player needs.
 
+### **Container Access Permissions**
+- Introduced a permission system to control who can access specific containers, improving gameplay security and flexibility.
+
+### **Container Overflow Handling**
+- Implemented item overflow handling by storing overflowing items temporarily and attempting to return them to the container later when empty space becomes available.  
+
 ---
 
 ## Code Modules
