@@ -33,7 +33,8 @@ const sidebars = {
           items: [
             'unify/features',
             'unify/getting-started',
-            'unify/gameplay-containers-setup'
+            'unify/gameplay-containers-setup',
+            'unify/gameplay-interaction-setup'
           ],
         },
         {
