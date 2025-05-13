@@ -13,13 +13,29 @@ This guide explains how to set up attachments for items using item definition da
 Start by creating a new item definition or using an existing one (e.g., a weapon item).  
 If you’re not sure how to create an item definition, refer to the [Creating New Items](creating-new-items).
 
+Next, you'll need to:
+
+1. **Create a new item definition for each attachment** you want to add to the main item (e.g., scope, battery, suppressor).
+2. **Assign the appropriate attachment slot type tag** to the **Owned Tags** of each attachment item.  
+   This tag defines **where** the item can be attached. Without the correct tag, the item **won’t attach**.
+
+:::tip Example
+If you want to attach a **Battery** item to a **Radio**, ensure the **Battery** item has a tag (e.g., `GameplayItem.Attachments.Battery`) that matches the **Battery** attachment slot on the Radio or your main item attachment slot type.
+:::
+
+:::note
+You can create new tags as needed following this format `GameplayItem.Attachments.{YOUR_SLOT_NAME}`
+:::
+
+![Attachment Tag Example](./images/gc-attachment-05.png)
+
 ---
 
 ## 2. Add an Attachments Fragment
 
-Once you have your item definition:
+Once you have your main item definition and attachments items definitions:
 
-- Add an **Attachments Fragment** to the item (e.g., for a weapon).
+- Add an **Attachments Fragment** to the main item (e.g., for a weapon).
 - This fragment enables the item to accept attachments.
 
 ![Image](./images/gc-attachment-01.png)
@@ -28,7 +44,7 @@ Once you have your item definition:
 
 ## 3. Configure the Attachments Fragment
 
-Now, set up how the item handles attachments by adding **Attachment Slots**:
+Now, set up how the main item handles attachments by adding **Attachment Slots**:
 
 Each slot configuration includes:
 
@@ -59,14 +75,16 @@ If `Is Partial` is **not** checked, it will only attach the **exact specified qu
 
 ## 4. Handling Attachment Logic in Item Instances
 
-Once you’ve configured your attachments, you can define how your item reacts when attachments are added, removed, or updated.
+Once you’ve configured your attachments, you can define how your main item reacts when attachments are added, removed, or updated.
 
 You have two main options:
 
 - **Use a general-purpose item instance** (Blueprint or C++) to handle all attachment logic for similar items.
-- **Create specific item instance Blueprints or C++ classes** for each item (e.g., per weapon), then assign them in the corresponding item definitions.
+- **Create specific item instances Blueprints or C++ classes** for each item (e.g., per weapon), then assign them in the corresponding item definitions.
 
-> These item instances will be used automatically when an item is created.
+> All item instances should inherit from `GameplayItemInstance` base class and these item instances will be used automatically when an item is created.
+
+![Image](./images/gc-attachment-06.png)
 
 ---
 
@@ -77,6 +95,7 @@ You can respond to the following **attachment-related events** in your item inst
 - **On Attachment Added**
 - **On Attachment Removed**
 - **On Attachment Updated**
+- **On Attachments Changed**
 
 Common use cases include:
 
@@ -84,6 +103,8 @@ Common use cases include:
 - Modifying **item stats** based on the stats or tags of the attached items.
 - Applying or removing **Gameplay Effects** when attachments change.
 - Overriding attachment behavior for specific items.
+
+![Image](./images/gc-attachment-04.png)
 
 ---
 
@@ -132,7 +153,7 @@ There are two ways to test attachments:
   - **Detach** attachments in one of the following ways:
     - **Alt + Right-Click** the main item to open the context menu, then select **"Detach All Items"**.  
       > This requires the main item to have an **Actions Fragment** with the **Detach All Items** action added.  
-      
+
       > (This input is the default in the *Unify Project*, but may differ in your setup.)
     
     - **Control + Left-Click** the main item to open the **attachments menu**, allowing for manual detachment.  
