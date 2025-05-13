@@ -5,7 +5,7 @@
 <meta name="generator" content="Docusaurus v3.7.0">
 <title data-rh="true">Creating And Configuring Attachments | Nazake</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://imnazake.github.io/imnazake/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://imnazake.github.io/imnazake/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://imnazake.github.io/imnazake/docs/gameplay-containers/creating-and-configuring-attachments"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Creating And Configuring Attachments | Nazake"><meta data-rh="true" name="description" content="This guide explains how to set up attachments for items using item definition data assets. Attachments allow items (like weapons) to support modular add-ons such as scopes, barrels, or accessories."><meta data-rh="true" property="og:description" content="This guide explains how to set up attachments for items using item definition data assets. Attachments allow items (like weapons) to support modular add-ons such as scopes, barrels, or accessories."><link data-rh="true" rel="icon" href="/imnazake/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://imnazake.github.io/imnazake/docs/gameplay-containers/creating-and-configuring-attachments"><link data-rh="true" rel="alternate" href="https://imnazake.github.io/imnazake/docs/gameplay-containers/creating-and-configuring-attachments" hreflang="en"><link data-rh="true" rel="alternate" href="https://imnazake.github.io/imnazake/docs/gameplay-containers/creating-and-configuring-attachments" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/imnazake/blog/rss.xml" title="Nazake RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/imnazake/blog/atom.xml" title="Nazake Atom Feed"><link rel="stylesheet" href="/imnazake/assets/css/styles.c1ba8f01.css">
-<script src="/imnazake/assets/js/runtime~main.cea307e5.js" defer="defer"></script>
+<script src="/imnazake/assets/js/runtime~main.94bf3a62.js" defer="defer"></script>
 <script src="/imnazake/assets/js/main.dfd0718d.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -15,17 +15,26 @@
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="1-create-or-use-an-existing-item-definition">1. Create or Use an Existing Item Definition<a href="#1-create-or-use-an-existing-item-definition" class="hash-link" aria-label="Direct link to 1. Create or Use an Existing Item Definition" title="Direct link to 1. Create or Use an Existing Item Definition">​</a></h2>
 <p>Start by creating a new item definition or using an existing one (e.g., a weapon item).<br>
 <!-- -->If you’re not sure how to create an item definition, refer to the <a href="/imnazake/docs/gameplay-containers/creating-new-items">Creating New Items</a>.</p>
+<p>Next, you&#x27;ll need to:</p>
+<ol>
+<li><strong>Create a new item definition for each attachment</strong> you want to add to the main item (e.g., scope, battery, suppressor).</li>
+<li><strong>Assign the appropriate attachment slot type tag</strong> to the <strong>Owned Tags</strong> of each attachment item.<br>
+<!-- -->This tag defines <strong>where</strong> the item can be attached. Without the correct tag, the item <strong>won’t attach</strong>.</li>
+</ol>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>Example</div><div class="admonitionContent_BuS1"><p>If you want to attach a <strong>Battery</strong> item to a <strong>Radio</strong>, ensure the <strong>Battery</strong> item has a tag (e.g., <code>GameplayItem.Attachments.Battery</code>) that matches the <strong>Battery</strong> attachment slot on the Radio or your main item attachment slot type.</p></div></div>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><p>You can create new tags as needed following this format <code>GameplayItem.Attachments.{YOUR_SLOT_NAME}</code></p></div></div>
+<p><img decoding="async" loading="lazy" alt="Attachment Tag Example" src="/imnazake/assets/images/gc-attachment-05-66e491dbb27b35f884a988e4ca5147b0.png" width="1383" height="480" class="img_ev3q"></p>
 <hr>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="2-add-an-attachments-fragment">2. Add an Attachments Fragment<a href="#2-add-an-attachments-fragment" class="hash-link" aria-label="Direct link to 2. Add an Attachments Fragment" title="Direct link to 2. Add an Attachments Fragment">​</a></h2>
-<p>Once you have your item definition:</p>
+<p>Once you have your main item definition and attachments items definitions:</p>
 <ul>
-<li>Add an <strong>Attachments Fragment</strong> to the item (e.g., for a weapon).</li>
+<li>Add an <strong>Attachments Fragment</strong> to the main item (e.g., for a weapon).</li>
 <li>This fragment enables the item to accept attachments.</li>
 </ul>
 <p><img decoding="async" loading="lazy" alt="Image" src="/imnazake/assets/images/gc-attachment-01-3fe3fa3701f0bc94431081214fa58966.png" width="1531" height="672" class="img_ev3q"></p>
 <hr>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="3-configure-the-attachments-fragment">3. Configure the Attachments Fragment<a href="#3-configure-the-attachments-fragment" class="hash-link" aria-label="Direct link to 3. Configure the Attachments Fragment" title="Direct link to 3. Configure the Attachments Fragment">​</a></h2>
-<p>Now, set up how the item handles attachments by adding <strong>Attachment Slots</strong>:</p>
+<p>Now, set up how the main item handles attachments by adding <strong>Attachment Slots</strong>:</p>
 <p>Each slot configuration includes:</p>
 <table><thead><tr><th>Property</th><th>Description</th></tr></thead><tbody><tr><td><strong>Attachment Slot Type</strong></td><td>Identifies the slot type (e.g., <code>Scope</code>, <code>Muzzle</code>, <code>Magazine</code>).</td></tr><tr><td><strong>Supported Items Definitions</strong></td><td>Specifies which items can be attached in that slot.</td></tr><tr><td><strong>Max Quantity</strong></td><td>Defines how many of that attachment can be added to the slot.</td></tr><tr><td><strong>Startup Attachments</strong></td><td>Indicates which attachments should be added or attached to the main item when it gets created.</td></tr></tbody></table>
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>In <strong>Startup Attachments</strong>, if <code>Is Partial</code> is checked, the system will attempt to attach <em>any possible quantity</em> of the item to the main item when it gets created — not necessarily meeting the specified quantity.<br>
@@ -46,15 +55,16 @@
 <p><img decoding="async" loading="lazy" alt="Image" src="/imnazake/assets/images/gc-attachment-02-4a828b1e61b21ab760aee9fab70ee797.png" width="1285" height="904" class="img_ev3q"></p>
 <hr>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="4-handling-attachment-logic-in-item-instances">4. Handling Attachment Logic in Item Instances<a href="#4-handling-attachment-logic-in-item-instances" class="hash-link" aria-label="Direct link to 4. Handling Attachment Logic in Item Instances" title="Direct link to 4. Handling Attachment Logic in Item Instances">​</a></h2>
-<p>Once you’ve configured your attachments, you can define how your item reacts when attachments are added, removed, or updated.</p>
+<p>Once you’ve configured your attachments, you can define how your main item reacts when attachments are added, removed, or updated.</p>
 <p>You have two main options:</p>
 <ul>
 <li><strong>Use a general-purpose item instance</strong> (Blueprint or C++) to handle all attachment logic for similar items.</li>
-<li><strong>Create specific item instance Blueprints or C++ classes</strong> for each item (e.g., per weapon), then assign them in the corresponding item definitions.</li>
+<li><strong>Create specific item instances Blueprints or C++ classes</strong> for each item (e.g., per weapon), then assign them in the corresponding item definitions.</li>
 </ul>
 <blockquote>
-<p>These item instances will be used automatically when an item is created.</p>
+<p>All item instances should inherit from <code>GameplayItemInstance</code> base class and these item instances will be used automatically when an item is created.</p>
 </blockquote>
+<p><img decoding="async" loading="lazy" alt="Image" src="/imnazake/assets/images/gc-attachment-06-aa40fa731f366f02588d9cf9c1c57a2e.png" width="1907" height="424" class="img_ev3q"></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="handling-attachment-events">Handling Attachment Events<a href="#handling-attachment-events" class="hash-link" aria-label="Direct link to Handling Attachment Events" title="Direct link to Handling Attachment Events">​</a></h3>
 <p>You can respond to the following <strong>attachment-related events</strong> in your item instance class:</p>
