@@ -432,6 +432,35 @@ void AMyCharacter::OnItemUnequipped(const UGameplayItemDefinition* Item)
 }
 ```
 
+:::warning Avoid Circular Dependency Issues
+
+To prevent circular dependency issues in your project, it is recommended to **move the ability classes, ability costs** from the plugin source folder:
+
+```
+Plugins/GameplayContainers/Source/GameplayContainers/Public/Core/Abilities
+```
+
+...into your **project source directory** where you have your own abilities.
+
+Alternatively, you can:
+
+- **Copy the ability and cost classes**
+- **Rename them** appropriately in your project
+- Use these copies instead of referencing the original plugin ability classes
+
+> You can also move or copy the attributes if needed otherwise you can extend them inside the plugin source.
+
+This approach is especially useful if:
+
+- You have your **own subclass** of `UGameplayAbility`
+- You have your **own costs** for abilities
+- You want your abilities and costs to **work consistently** with your project-specific code
+- You want to **avoid reparenting** plugin classes directly, which often leads to circular dependencies and other complications
+
+By using your own project-local versions of the abilities and costs, you ensure better integration and avoid tight coupling with the plugin.
+
+:::
+
 - Everything should now be ready on the C++ side. Let's Compile and proceed to set up and configure the rest in the editor. Press the compile button again to compile the project code and run the Unreal Engine Editor.
 
 :::note

@@ -77,6 +77,7 @@ PublicDependencyModuleNames.AddRange(new string[]
     "GameplayTags",
     "EnhancedInput",
     "CommonUI",
+
     "GameplayInteraction"
 });
 
@@ -1475,6 +1476,31 @@ void AUnifyCharacter::InitializePlayerInput(UUnifyInputComponent* PlayerInputCom
 }
 
 ```
+
+:::warning Avoid Circular Dependency Issues
+
+To prevent circular dependency issues in your project, it is recommended to **move the ability classes** from the plugin source folder:
+
+```
+Plugins/GameplayInteraction/Source/GameplayInteraction/Public/Core/Abilities
+```
+
+into your **project source directory** where you have your own abilities.
+
+Alternatively, you can:
+
+- **Copy the ability classes**
+- **Rename them** appropriately in your project
+- Use these copies instead of referencing the original plugin ability classes
+
+This approach is especially useful if:
+
+- You have your **own subclass** of `UGameplayAbility`
+- You want your abilities to **work consistently** with your project-specific code
+- You want to **avoid reparenting** plugin classes directly, which often leads to circular dependencies and other complications
+
+By using your own project-local versions of the abilities, you ensure better integration and avoid tight coupling with the plugin.
+:::
 
 :::info
 After setting up the required code in your IDE, you will need to recompile the source code while the editor is closed.
