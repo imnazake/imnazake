@@ -2,109 +2,154 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://imnazake.github.io/imnazake/blog</id>
     <title>Nazake Blog</title>
-    <updated>2021-08-26T00:00:00.000Z</updated>
+    <updated>2025-01-01T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://imnazake.github.io/imnazake/blog"/>
     <subtitle>Nazake Blog</subtitle>
     <icon>https://imnazake.github.io/imnazake/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[Welcome]]></title>
-        <id>https://imnazake.github.io/imnazake/blog/welcome</id>
-        <link href="https://imnazake.github.io/imnazake/blog/welcome"/>
-        <updated>2021-08-26T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Docusaurus blogging features are powered by the blog plugin.]]></summary>
-        <content type="html"><![CDATA[<p><a href="https://docusaurus.io/docs/blog" target="_blank" rel="noopener noreferrer">Docusaurus blogging features</a> are powered by the <a href="https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog" target="_blank" rel="noopener noreferrer">blog plugin</a>.</p>
-<p>Here are a few tips you might find useful.</p>
-<p>Simply add Markdown files (or folders) to the <code>blog</code> directory.</p>
-<p>Regular blog authors can be added to <code>authors.yml</code>.</p>
-<p>The blog post date can be extracted from filenames, such as:</p>
+        <title type="html"><![CDATA[Clean Folder Structure (Editor)]]></title>
+        <id>https://imnazake.github.io/imnazake/blog/unreal-editor-folder-structure</id>
+        <link href="https://imnazake.github.io/imnazake/blog/unreal-editor-folder-structure"/>
+        <updated>2025-01-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[A maintainable content folder structure for Unreal Engine projects that scales with solo and team development.]]></summary>
+        <content type="html"><![CDATA[<p>Organizing your Unreal Engine project is one of the most underrated things you can do to stay productive and avoid chaos as your game grows.</p>
+<p>Here’s a <strong>clean and maintainable folder structure</strong> that works great for both solo developers and teams. It’s battle-tested and follows industry best practices.</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-folder-structure">📁 Folder Structure<a href="https://imnazake.github.io/imnazake/blog/unreal-editor-folder-structure#-folder-structure" class="hash-link" aria-label="Direct link to 📁 Folder Structure" title="Direct link to 📁 Folder Structure">​</a></h2>
+<p>This goes inside your <strong><code>Content</code></strong> folder:</p>
+<div class="language-plaintext codeBlockContainer_Ckt0 theme-code-block" style="--prism-background-color:hsl(230, 1%, 98%);--prism-color:hsl(230, 8%, 24%)"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-plaintext codeBlock_bY9V thin-scrollbar" style="background-color:hsl(230, 1%, 98%);color:hsl(230, 8%, 24%)"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">Content/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">├── Art/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Characters/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Environments/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Props/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   └── UI/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">├── Blueprints/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Characters/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Controllers/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── GameModes/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Interfaces/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Widgets/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   └── Misc/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">├── Maps/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── MainMenu/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Levels/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   └── Testing/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">├── Materials/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Master/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Instances/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Functions/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   └── Textures/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">├── Meshes/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Characters/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Environments/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Props/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   └── Vehicles/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">├── Animations/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Characters/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Montages/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   └── Blendspaces/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">├── Audio/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Music/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── SFX/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   └── VO/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">├── UI/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Widgets/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Fonts/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   └── Textures/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">├── FX/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Particles/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Niagara/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   └── Decals/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">├── Core/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── DataAssets/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Enums/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Structs/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   └── Functions/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">├── Game/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Abilities/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Inventory/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Items/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Weapons/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   └── Mechanics/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">└── Dev/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">    ├── [YourName]/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">    └── Sandbox/</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-breakdown">🧠 Breakdown<a href="https://imnazake.github.io/imnazake/blog/unreal-editor-folder-structure#-breakdown" class="hash-link" aria-label="Direct link to 🧠 Breakdown" title="Direct link to 🧠 Breakdown">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="art">Art<a href="https://imnazake.github.io/imnazake/blog/unreal-editor-folder-structure#art" class="hash-link" aria-label="Direct link to Art" title="Direct link to Art">​</a></h3>
+<p>External content and artist-friendly folders. Put concept art, references, and high-poly models here.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="blueprints">Blueprints<a href="https://imnazake.github.io/imnazake/blog/unreal-editor-folder-structure#blueprints" class="hash-link" aria-label="Direct link to Blueprints" title="Direct link to Blueprints">​</a></h3>
+<p>Your game’s logic brain. Divide by type — characters, controllers, widgets, etc.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="maps">Maps<a href="https://imnazake.github.io/imnazake/blog/unreal-editor-folder-structure#maps" class="hash-link" aria-label="Direct link to Maps" title="Direct link to Maps">​</a></h3>
+<p>Main levels, test levels, and menus — all organized for clarity.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="materials">Materials<a href="https://imnazake.github.io/imnazake/blog/unreal-editor-folder-structure#materials" class="hash-link" aria-label="Direct link to Materials" title="Direct link to Materials">​</a></h3>
+<p>Split between <code>Master</code>, <code>Instances</code>, and <code>Functions</code> to make scaling easier.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="meshes">Meshes<a href="https://imnazake.github.io/imnazake/blog/unreal-editor-folder-structure#meshes" class="hash-link" aria-label="Direct link to Meshes" title="Direct link to Meshes">​</a></h3>
+<p>Static Meshes and Skeletal Meshes. Organized by category like environment or props.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="animations">Animations<a href="https://imnazake.github.io/imnazake/blog/unreal-editor-folder-structure#animations" class="hash-link" aria-label="Direct link to Animations" title="Direct link to Animations">​</a></h3>
+<p>Keep blendspaces, montages, and sequences tidy by character or category.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="audio">Audio<a href="https://imnazake.github.io/imnazake/blog/unreal-editor-folder-structure#audio" class="hash-link" aria-label="Direct link to Audio" title="Direct link to Audio">​</a></h3>
+<p>Separate voice lines, SFX, and music for easy audio pipeline control.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ui">UI<a href="https://imnazake.github.io/imnazake/blog/unreal-editor-folder-structure#ui" class="hash-link" aria-label="Direct link to UI" title="Direct link to UI">​</a></h3>
+<p>Widgets, textures, and fonts for HUDs, menus, and UI elements.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="fx">FX<a href="https://imnazake.github.io/imnazake/blog/unreal-editor-folder-structure#fx" class="hash-link" aria-label="Direct link to FX" title="Direct link to FX">​</a></h3>
+<p>Visual effects, particle systems, and decals go here — use Niagara for future-proofing.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="core">Core<a href="https://imnazake.github.io/imnazake/blog/unreal-editor-folder-structure#core" class="hash-link" aria-label="Direct link to Core" title="Direct link to Core">​</a></h3>
+<p>Game-wide systems like enums, structs, utility functions, and DataAssets.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="game">Game<a href="https://imnazake.github.io/imnazake/blog/unreal-editor-folder-structure#game" class="hash-link" aria-label="Direct link to Game" title="Direct link to Game">​</a></h3>
+<p>Gameplay logic: abilities (GAS), inventory, items, weapons, etc.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="dev">Dev<a href="https://imnazake.github.io/imnazake/blog/unreal-editor-folder-structure#dev" class="hash-link" aria-label="Direct link to Dev" title="Direct link to Dev">​</a></h3>
+<p>For developer sandboxes, experiments, and WIP content — keep it outside your shipping build.</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="️-naming-conventions">✍️ Naming Conventions<a href="https://imnazake.github.io/imnazake/blog/unreal-editor-folder-structure#%EF%B8%8F-naming-conventions" class="hash-link" aria-label="Direct link to ✍️ Naming Conventions" title="Direct link to ✍️ Naming Conventions">​</a></h2>
 <ul>
-<li><code>2019-05-30-welcome.md</code></li>
-<li><code>2019-05-30-welcome/index.md</code></li>
+<li>Blueprints: <code>BP_</code> (e.g. <code>BP_PlayerCharacter</code>)</li>
+<li>Widgets: <code>WBP_</code> (e.g. <code>WBP_InventoryMenu</code>)</li>
+<li>Materials: <code>M_</code>, <code>MI_</code> (Material Instance), <code>MF_</code> (Function)</li>
+<li>Static Meshes: <code>SM_</code>, Skeletal Meshes: <code>SK_</code></li>
+<li>Sounds: <code>SFX_</code>, <code>BGM_</code>, <code>VO_</code></li>
+<li>Animations: <code>AS_</code> (AnimSequence), <code>AM_</code> (AnimMontage), <code>BS_</code> (Blendspace)</li>
 </ul>
-<p>A blog post folder can be convenient to co-locate blog post images:</p>
-<p><img decoding="async" loading="lazy" alt="Docusaurus Plushie" src="https://imnazake.github.io/imnazake/assets/images/docusaurus-plushie-banner-a60f7593abca1e3eef26a9afa244e4fb.jpeg" width="1500" height="500" class="img_ev3q"></p>
-<p>The blog supports tags as well!</p>
-<p><strong>And if you don't want a blog</strong>: just delete this directory, and use <code>blog: false</code> in your Docusaurus config.</p>]]></content>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-best-practices">✅ Best Practices<a href="https://imnazake.github.io/imnazake/blog/unreal-editor-folder-structure#-best-practices" class="hash-link" aria-label="Direct link to ✅ Best Practices" title="Direct link to ✅ Best Practices">​</a></h2>
+<ul>
+<li>Use <strong>Editor Utility Widgets</strong> to automate organization and bulk operations.</li>
+<li>Consider <strong>feature plugins</strong> if you're building large modular systems.</li>
+<li>Keep <code>Dev/</code> out of version control or builds.</li>
+<li>Clean unused assets regularly using the reference viewer.</li>
+</ul>
+<hr>
+<p>A well-structured project makes debugging easier, improves iteration speed, and reduces onboarding time for collaborators. Set it up right from the start — future you will thank you.</p>
+<p>Got a better structure or plugin-friendly setup? Drop it in the comments!</p>
+<hr>]]></content>
         <author>
-            <name>Sébastien Lorber</name>
-            <uri>https://sebastienlorber.com</uri>
+            <name>Nazake</name>
+            <uri>https://github.com/imnazake</uri>
         </author>
-        <author>
-            <name>Yangshun Tay</name>
-            <uri>https://github.com/yangshun</uri>
-        </author>
-        <category label="Facebook" term="Facebook"/>
-        <category label="Hello" term="Hello"/>
-        <category label="Docusaurus" term="Docusaurus"/>
+        <category label="UnrealEngine" term="UnrealEngine"/>
+        <category label="Editor" term="Editor"/>
+        <category label="Structure" term="Structure"/>
+        <category label="Blueprints" term="Blueprints"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[MDX Blog Post]]></title>
-        <id>https://imnazake.github.io/imnazake/blog/mdx-blog-post</id>
-        <link href="https://imnazake.github.io/imnazake/blog/mdx-blog-post"/>
-        <updated>2021-08-01T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Blog posts support Docusaurus Markdown features, such as MDX.]]></summary>
-        <content type="html"><![CDATA[<p>Blog posts support <a href="https://docusaurus.io/docs/markdown-features" target="_blank" rel="noopener noreferrer">Docusaurus Markdown features</a>, such as <a href="https://mdxjs.com/" target="_blank" rel="noopener noreferrer">MDX</a>.</p>
-<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_BuS1"><p>Use the power of React to create interactive blog posts.</p></div></div>
-<!-- -->
-<p>For example, use JSX to create an interactive button:</p>
-<div class="language-js codeBlockContainer_Ckt0 theme-code-block" style="--prism-background-color:hsl(230, 1%, 98%);--prism-color:hsl(230, 8%, 24%)"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-js codeBlock_bY9V thin-scrollbar" style="background-color:hsl(230, 1%, 98%);color:hsl(230, 8%, 24%)"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token operator" style="color:hsl(221, 87%, 60%)">&lt;</span><span class="token plain">button onClick</span><span class="token operator" style="color:hsl(221, 87%, 60%)">=</span><span class="token punctuation" style="color:hsl(119, 34%, 47%)">{</span><span class="token punctuation" style="color:hsl(119, 34%, 47%)">(</span><span class="token punctuation" style="color:hsl(119, 34%, 47%)">)</span><span class="token plain"> </span><span class="token arrow operator" style="color:hsl(221, 87%, 60%)">=&gt;</span><span class="token plain"> </span><span class="token function" style="color:hsl(221, 87%, 60%)">alert</span><span class="token punctuation" style="color:hsl(119, 34%, 47%)">(</span><span class="token string" style="color:hsl(119, 34%, 47%)">'button clicked!'</span><span class="token punctuation" style="color:hsl(119, 34%, 47%)">)</span><span class="token punctuation" style="color:hsl(119, 34%, 47%)">}</span><span class="token operator" style="color:hsl(221, 87%, 60%)">&gt;</span><span class="token maybe-class-name">Click</span><span class="token plain"> me</span><span class="token operator" style="color:hsl(221, 87%, 60%)">!</span><span class="token operator" style="color:hsl(221, 87%, 60%)">&lt;</span><span class="token operator" style="color:hsl(221, 87%, 60%)">/</span><span class="token plain">button</span><span class="token operator" style="color:hsl(221, 87%, 60%)">&gt;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<button>Click me!</button>]]></content>
+        <title type="html"><![CDATA[Clean Folder Structure (IDE)]]></title>
+        <id>https://imnazake.github.io/imnazake/blog/unreal-cpp-folder-structure</id>
+        <link href="https://imnazake.github.io/imnazake/blog/unreal-cpp-folder-structure"/>
+        <updated>2025-01-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[A scalable C++ source folder structure for Unreal Engine that supports both solo and team development workflows.]]></summary>
+        <content type="html"><![CDATA[<p>Unreal Engine's default C++ folder layout works, but it quickly becomes a mess as your game grows. A well-structured <code>Source/</code> folder can save hours of debugging and onboarding headaches.</p>
+<p>Here’s a <strong>clean and modular C++ folder structure</strong> that scales with solo and team development.</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-folder-structure">📁 Folder Structure<a href="https://imnazake.github.io/imnazake/blog/unreal-cpp-folder-structure#-folder-structure" class="hash-link" aria-label="Direct link to 📁 Folder Structure" title="Direct link to 📁 Folder Structure">​</a></h2>
+<p>This goes inside your <strong><code>Source/YourProject</code></strong> directory:</p>
+<div class="language-plaintext codeBlockContainer_Ckt0 theme-code-block" style="--prism-background-color:hsl(230, 1%, 98%);--prism-color:hsl(230, 8%, 24%)"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-plaintext codeBlock_bY9V thin-scrollbar" style="background-color:hsl(230, 1%, 98%);color:hsl(230, 8%, 24%)"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">Source/YourProject/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">├── Core/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── YourProject.h           </span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── YourProject.cpp</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── LogChannels.h             # Centralized log categories</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   └── Utility/                  # Macros, helpers, common utilities</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">├── Game/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── GameMode/                 # GameMode classes</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── GameState/                # GameState classes</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Player/                   # Player-specific logic</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   ├── PlayerCharacter/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   ├── PlayerController/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   └── PlayerState/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   └── HUD/                     # HUD/UI related to gameplay</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">├── Systems/                     # Self-contained gameplay systems</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Inventory/               # Inventory system implementation</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   ├── InventorySystem              # Core system classes</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   ├── InventoryComponents          # Component(s) related to inventory</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   ├── InventoryEnums               # Enums used by inventory system</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   ├── InventoryStructs             # Structs and data structures</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   ├── InventoryDataAssets          # UDataAsset definitions</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   ├── InventoryInterfaces          # Interfaces used by inventory system</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   └── [Other inventory-related files]</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Abilities/               # Gameplay abilities system</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   ├── AbilitySystem </span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   ├── AbilityComponents </span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   ├── AbilityEnums</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   ├── AbilityStructs</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   ├── AbilityDataAsset</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   ├── AbilityInterfaces</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   └── [Other ability-related files]</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Interaction/            # Player or world interaction system</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   ├── InteractionSystem </span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   ├── InteractionComponents</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   ├── InteractionEnums </span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   ├── InteractionStructs </span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   ├── InteractionInterfaces</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │   └── [Other interaction files]</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   │</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   └── [Other systems…]</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">├── UI/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   ├── Widgets/                # UUserWidget classes</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   └── Data/                   # UI-related data assets and enums etc...</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">├── Dev/                       # Temporary/testing/experimental code</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│   └── Sandbox/</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">│</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">└── YourProject.Build.cs        # Build configuration file</span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain" style="display:inline-block"></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-breakdown">🧠 Breakdown<a href="https://imnazake.github.io/imnazake/blog/unreal-cpp-folder-structure#-breakdown" class="hash-link" aria-label="Direct link to 🧠 Breakdown" title="Direct link to 🧠 Breakdown">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="core">Core<a href="https://imnazake.github.io/imnazake/blog/unreal-cpp-folder-structure#core" class="hash-link" aria-label="Direct link to Core" title="Direct link to Core">​</a></h3>
+<p>Core headers, macros, and logging config. Usually where your precompiled header (<code>YourProject.h</code>) and main module file (<code>YourProject.cpp</code>) live.
+Contains utilities and helper functions common across your entire project.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="game">Game<a href="https://imnazake.github.io/imnazake/blog/unreal-cpp-folder-structure#game" class="hash-link" aria-label="Direct link to Game" title="Direct link to Game">​</a></h3>
+<p>All player-related gameplay logic — <code>GameMode</code>, <code>GameState</code>, <code>HUD</code>s, and player-specific logic like characters or controllers.
+Handles gameplay flow, rules, and player input management.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="systems">Systems<a href="https://imnazake.github.io/imnazake/blog/unreal-cpp-folder-structure#systems" class="hash-link" aria-label="Direct link to Systems" title="Direct link to Systems">​</a></h3>
+<p>Self-contained gameplay systems that encapsulate specific game mechanics. Designed to be modular for reuse or plugin conversion.</p>
+<ul>
+<li>
+<p>Inventory
+Implements all inventory-related features: core systems, components for inventory management, enums for item types or states, data structures for item definitions, UDataAssets for configurable data, and interfaces for interaction contracts.</p>
+</li>
+<li>
+<p>Abilities
+Manages gameplay abilities including the ability system core, ability-related components, enums, structs, data assets, and interfaces to define ability behaviors and effects.</p>
+</li>
+<li>
+<p>Interaction
+Handles player or world interaction systems: interaction logic, components, enums to define interaction types, data structs, and interfaces to implement consistent interaction contracts.</p>
+</li>
+<li>
+<p>Other systems
+Add more gameplay systems as needed, following the same modular structure.</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ui">UI<a href="https://imnazake.github.io/imnazake/blog/unreal-cpp-folder-structure#ui" class="hash-link" aria-label="Direct link to UI" title="Direct link to UI">​</a></h3>
+<p>Contains your <code>UUserWidget</code> C++ classes and any supporting UI logic or data (e.g. data tables, UI enums).</p>
+<ul>
+<li><strong>Widgets:</strong> All UUserWidget subclasses for HUD elements, menus, and UI components.</li>
+<li><strong>Data:</strong> UI-related data assets, enums, and supporting structures.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="dev">Dev<a href="https://imnazake.github.io/imnazake/blog/unreal-cpp-folder-structure#dev" class="hash-link" aria-label="Direct link to Dev" title="Direct link to Dev">​</a></h3>
+<p>Temporary or experimental code and sandbox tests. Useful for prototyping and development without affecting production code. Should be excluded from shipping builds.</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="️-naming-conventions">✍️ Naming Conventions<a href="https://imnazake.github.io/imnazake/blog/unreal-cpp-folder-structure#%EF%B8%8F-naming-conventions" class="hash-link" aria-label="Direct link to ✍️ Naming Conventions" title="Direct link to ✍️ Naming Conventions">​</a></h2>
+<p>Stick to Unreal’s coding standards but you can adopt slight variations for clarity:</p>
+<ul>
+<li><strong>Classes:</strong> <code>U</code>, <code>A</code>, <code>F</code>, <code>I</code> prefixes (e.g. <code>UUserWidget</code>, <code>AEnemy</code>, <code>FItemData</code>, <code>IInteractable</code>)</li>
+<li><strong>Components:</strong> <code>UYourProject[Name]Component</code> (e.g. <code>UYourProjectHealthComponent</code>)</li>
+<li><strong>Systems:</strong> Folder-level prefixes like <code>Inventory/</code>, <code>Abilities/</code>, etc.</li>
+<li><strong>Log Categories:</strong> Use a centralized <code>LogChannels.h</code></li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-best-practices">✅ Best Practices<a href="https://imnazake.github.io/imnazake/blog/unreal-cpp-folder-structure#-best-practices" class="hash-link" aria-label="Direct link to ✅ Best Practices" title="Direct link to ✅ Best Practices">​</a></h2>
+<ul>
+<li><strong>1 class per file:</strong> Avoid multiple classes in one file unless nested or private.</li>
+<li><strong>Minimal header includes:</strong> Use forward declarations where possible.</li>
+<li><strong>Feature folder plugins:</strong> For even better separation, migrate systems into <a href="https://docs.unrealengine.com/en-US/creating-and-managing-plugins-in-unreal-engine/" target="_blank" rel="noopener noreferrer">feature plugins</a> over time.</li>
+<li><strong>Avoid circular dependencies:</strong> Especially between systems — use interfaces or weak references.</li>
+</ul>
+<hr>
+<p>A clean C++ folder structure reduces confusion, speeds up compile times, and helps new developers (or future you) navigate the codebase with confidence.</p>
+<p>Got your own folder strategy or engine module setup? Share it in the comments!</p>]]></content>
         <author>
-            <name>Sébastien Lorber</name>
-            <uri>https://sebastienlorber.com</uri>
+            <name>Nazake</name>
+            <uri>https://github.com/imnazake</uri>
         </author>
-        <category label="Docusaurus" term="Docusaurus"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Long Blog Post]]></title>
-        <id>https://imnazake.github.io/imnazake/blog/long-blog-post</id>
-        <link href="https://imnazake.github.io/imnazake/blog/long-blog-post"/>
-        <updated>2019-05-29T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[This is the summary of a very long blog post,]]></summary>
-        <content type="html"><![CDATA[<p>This is the summary of a very long blog post,</p>
-<p>Use a <code>&lt;!--</code> <code>truncate</code> <code>--&gt;</code> comment to limit blog post size in the list view.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>]]></content>
-        <author>
-            <name>Yangshun Tay</name>
-            <uri>https://github.com/yangshun</uri>
-        </author>
-        <category label="Hello" term="Hello"/>
-        <category label="Docusaurus" term="Docusaurus"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[First Blog Post]]></title>
-        <id>https://imnazake.github.io/imnazake/blog/first-blog-post</id>
-        <link href="https://imnazake.github.io/imnazake/blog/first-blog-post"/>
-        <updated>2019-05-28T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Lorem ipsum dolor sit amet...]]></summary>
-        <content type="html"><![CDATA[<p>Lorem ipsum dolor sit amet...</p>
-<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-background-color:hsl(230, 1%, 98%);--prism-color:hsl(230, 8%, 24%)"><div class="codeBlockTitle_Ktv7">src/components/HelloDocusaurus.js</div><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="background-color:hsl(230, 1%, 98%);color:hsl(230, 8%, 24%)"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token keyword" style="color:hsl(301, 63%, 40%)">void</span><span class="token plain"> </span><span class="token function" style="color:hsl(221, 87%, 60%)">HelloDocusaurus</span><span class="token punctuation" style="color:hsl(119, 34%, 47%)">(</span><span class="token punctuation" style="color:hsl(119, 34%, 47%)">)</span><span class="token plain"> </span><span class="token punctuation" style="color:hsl(119, 34%, 47%)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain">  </span><span class="token keyword" style="color:hsl(301, 63%, 40%)">return</span><span class="token plain"> </span><span class="token punctuation" style="color:hsl(119, 34%, 47%)">(</span><span class="token plain">x </span><span class="token operator" style="color:hsl(221, 87%, 60%)">+</span><span class="token plain"> </span><span class="token number" style="color:hsl(35, 99%, 36%)">1</span><span class="token plain"> </span><span class="token operator" style="color:hsl(221, 87%, 60%)">==</span><span class="token plain"> </span><span class="token number" style="color:hsl(35, 99%, 36%)">0</span><span class="token punctuation" style="color:hsl(119, 34%, 47%)">)</span><span class="token punctuation" style="color:hsl(119, 34%, 47%)">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:hsl(230, 8%, 24%)"><span class="token plain"></span><span class="token punctuation" style="color:hsl(119, 34%, 47%)">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p>...consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>]]></content>
-        <author>
-            <name>Sébastien Lorber</name>
-            <uri>https://sebastienlorber.com</uri>
-        </author>
-        <author>
-            <name>Yangshun Tay</name>
-            <uri>https://github.com/yangshun</uri>
-        </author>
-        <category label="Hola" term="Hola"/>
-        <category label="Docusaurus" term="Docusaurus"/>
+        <category label="UnrealEngine" term="UnrealEngine"/>
+        <category label="IDE" term="IDE"/>
+        <category label="Structure" term="Structure"/>
+        <category label="C++" term="C++"/>
     </entry>
 </feed>

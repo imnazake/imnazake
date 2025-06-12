@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunknazake=self.webpackChunknazake||[]).push([[5941],{4258:a=>{a.exports=JSON.parse('{"metadata":{"permalink":"/imnazake/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":2,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
