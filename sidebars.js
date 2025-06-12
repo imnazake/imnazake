@@ -44,12 +44,14 @@ const sidebars = {
           items: [
             'gameplay-containers/features',
             'gameplay-containers/changelog',
+            'gameplay-containers/roadmap',
             'gameplay-containers/setup',
             'gameplay-containers/creating-new-items',
             'gameplay-containers/creating-new-equipment',
             'gameplay-containers/creating-new-containers',
             'gameplay-containers/creating-new-slots',
-            'gameplay-containers/creating-new-permissions'
+            'gameplay-containers/creating-new-permissions',
+            'gameplay-containers/creating-and-configuring-attachments'
           ],
         },
         {
@@ -59,7 +61,11 @@ const sidebars = {
           items: [
             'gameplay-interaction/features',
             'gameplay-interaction/changelog',
+            'gameplay-interaction/roadmap',
             'gameplay-interaction/setup',
+            'gameplay-interaction/creating-new-interactive-entities',           
+            'gameplay-interaction/creating-new-interaction-abilities',
+            'gameplay-interaction/creating-new-interaction-options',
           ],
         },
       ],

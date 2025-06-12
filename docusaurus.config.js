@@ -102,13 +102,13 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Patreon',
-                href: 'https://www.patreon.com/imnazake',
-              },
-              {
                 label: 'Discord',
                 href: 'https://discordapp.com/invite/AKavNKeDmd',
               },  
+              {
+                label: 'Patreon',
+                href: 'https://www.patreon.com/imnazake',
+              },            
             ],
           },
           {

@@ -67,6 +67,31 @@ This guide is applicable for Gameplay Interaction Plugin version **1.1 or higher
 - Add the `Unify` module name in `GameplayInteraction.Build.cs` in `PublicDependencyModuleNames`
 - Save all changes, close the unreal editor and then recompile again and launch the editor.
 
+:::warning Avoid Circular Dependency Issues
+
+To prevent circular dependency issues in your project, it is recommended to **move the ability classes** from the plugin source folder:
+
+```
+Plugins/GameplayInteraction/Source/GameplayInteraction/Public/Core/Abilities
+```
+
+into your **project source directory** where you have your own abilities.
+
+Alternatively, you can:
+
+- **Copy the ability classes**
+- **Rename them** appropriately in your project
+- Use these copies instead of referencing the original plugin ability classes
+
+This approach is especially useful if:
+
+- You have your **own subclass** of `UGameplayAbility`
+- You want your abilities to **work consistently** with your project-specific code
+- You want to **avoid reparenting** plugin classes directly, which often leads to circular dependencies and other complications
+
+By using your own project-local versions of the abilities, you ensure better integration and avoid tight coupling with the plugin.
+:::
+
 ![Reference Image for Reparent Abilities](images/gi_classes_to_reparent.png)
 ![Reference Image for Reparent Abilities](images/gi_class_reparent_example.png)
 ![Reference Image for Reparent Abilities](images/gi_build_cs_add_unify.png)
