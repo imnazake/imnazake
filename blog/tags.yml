@@ -1,19 +1,29 @@
-facebook:
-  label: Facebook
-  permalink: /facebook
-  description: Facebook tag description
+ue:
+  label: UnrealEngine
+  permalink: /ue
+  description: Unreal Engine
 
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
+editor:
+  label: Editor
+  permalink: /editor
+  description: Editor
 
-docusaurus:
-  label: Docusaurus
-  permalink: /docusaurus
-  description: Docusaurus tag description
+ide:
+  label: IDE
+  permalink: /ide
+  description: IDE
 
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
+c++:
+  label: C++
+  permalink: /cpp
+  description: C++
+
+blueprints:
+  label: Blueprints
+  permalink: /bp
+  description: Blueprints
+
+structure:
+  label: Structure
+  permalink: /structure
+  description: Structure
