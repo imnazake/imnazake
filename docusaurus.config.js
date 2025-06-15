@@ -104,11 +104,7 @@ const config = {
               {
                 label: 'Discord',
                 href: 'https://discordapp.com/invite/AKavNKeDmd',
-              },  
-              {
-                label: 'Patreon',
-                href: 'https://www.patreon.com/imnazake',
-              },            
+              },         
             ],
           },
           {
@@ -121,16 +117,7 @@ const config = {
               {
                 label: 'Twitter (X)',
                 href: 'https://x.com/imnazake',
-              },           
-              {
-                label: 'Instagram',
-                href: 'https://www.instagram.com/imnazake',
-              },
-              {
-                label: 'Tiktok',
-                href: 'https://www.tiktok.com/@imnazake',
-              },
-             
+              }                     
             ],
           },
           {
