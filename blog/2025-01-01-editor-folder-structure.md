@@ -9,6 +9,8 @@ date: 2025-01-01
 
 Organizing your Unreal Engine project is one of the most underrated things you can do to stay productive and avoid chaos as your game grows.
 
+<!-- truncate -->
+
 Here’s a **clean and maintainable folder structure** that works great for both solo developers and teams. It’s battle-tested and follows industry best practices.
 
 ---

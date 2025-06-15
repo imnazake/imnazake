@@ -7,7 +7,9 @@ slug: unreal-cpp-folder-structure
 date: 2025-01-01
 ---
 
-Unreal Engine's default C++ folder layout works, but it quickly becomes a mess as your game grows. A well-structured `Source/` folder can save hours of debugging and onboarding headaches.
+Unreal Engine's default C++ folder layout works, but it quickly becomes a mess as your game grows. A well-structured `Source` folder can save hours of debugging and onboarding headaches.
+
+<!-- truncate -->
 
 Here’s a **clean and modular C++ folder structure** that scales with solo and team development.
 
