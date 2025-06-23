@@ -29,15 +29,21 @@ Content/
 │   └── UI/
 │
 ├── Blueprints/
+│   ├── Player/
 │   ├── Characters/
-│   ├── Controllers/
 │   ├── GameModes/
 │   ├── Interfaces/
-│   ├── Widgets/
 │   └── Misc/
+│ 
+├── AI/                      
+│   ├── Controllers/        
+│   ├── BehaviorTrees/     
+│   ├── Tasks/
+│   ├── Services/
+│   └── Decorators/
 │
 ├── Maps/
-│   ├── MainMenu/
+│   ├── Menus/
 │   ├── Levels/
 │   └── Testing/
 │
@@ -79,12 +85,20 @@ Content/
 │   ├── Structs/
 │   └── Functions/
 │
-├── Game/
+├── Input/
+│   ├── Actions/
+│   ├── Contexts/
+│
+├── Systems/
 │   ├── Abilities/
 │   ├── Inventory/
-│   ├── Items/
 │   ├── Weapons/
-│   └── Mechanics/
+│   └── Items/
+│
+├── Editor/                
+│   ├── Blutilities/
+│   ├── Scripts/
+│   └── Tools/
 │
 └── Dev/
     ├── [YourName]/
@@ -99,7 +113,10 @@ Content/
 External content and artist-friendly folders. Put concept art, references, and high-poly models here.
 
 ### Blueprints
-Your game’s logic brain. Divide by type — characters, controllers, widgets, etc.
+All game logic implemented with Blueprints. Organized into categories like Characters, Player, GameModes, Interfaces, and Misc.
+
+### AI
+AI-related assets and logic. Includes behavior trees, blackboards, services, tasks, decorators, perception data, and AI controllers. 
 
 ### Maps
 Main levels, test levels, and menus — all organized for clarity.
@@ -123,10 +140,13 @@ Widgets, textures, and fonts for HUDs, menus, and UI elements.
 Visual effects, particle systems, and decals go here — use Niagara for future-proofing.
 
 ### Core
-Game-wide systems like enums, structs, utility functions, and DataAssets.
+Contains project-wide foundational assets such as global Enums, Structs, Function Libraries, and Data Assets.
 
-### Game
-Gameplay logic: abilities (GAS), inventory, items, weapons, etc.
+### Systems
+Contains modular, self-contained gameplay systems such as Inventory, Abilities, Items, and Interaction.
+
+### Editor
+Tools, utility widgets, scripts, config files. Never used in runtime.
 
 ### Dev
 For developer sandboxes, experiments, and WIP content — keep it outside your shipping build.
@@ -136,16 +156,22 @@ For developer sandboxes, experiments, and WIP content — keep it outside your s
 ## ✍️ Naming Conventions
 
 - Blueprints: `BP_` (e.g. `BP_PlayerCharacter`)
-- Widgets: `WBP_` (e.g. `WBP_InventoryMenu`)
+- Widgets: `W_` (e.g. `W_InventoryMenu`)
 - Materials: `M_`, `MI_` (Material Instance), `MF_` (Function)
 - Static Meshes: `SM_`, Skeletal Meshes: `SK_`
 - Sounds: `SFX_`, `BGM_`, `VO_`
 - Animations: `AS_` (AnimSequence), `AM_` (AnimMontage), `BS_` (Blendspace)
+- DataAssets: `DA_` (DataAsset)
+- Enums: `E_` (Enumeration), `EMyEnum` (Enumeration)
+- Structs: `F_` (Structure), or `FMyStruct` (Structure)
+- Interfaces: `I_` (Interface), or `IMyInterface` (Interface)
+
 
 ---
 
 ## ✅ Best Practices
 
+- Keep editor-only content isolated in the `Editor/` folder to avoid packaging it.
 - Use **Editor Utility Widgets** to automate organization and bulk operations.
 - Consider **feature plugins** if you're building large modular systems.
 - Keep `Dev/` out of version control or builds.

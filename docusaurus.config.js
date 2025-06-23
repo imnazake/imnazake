@@ -104,20 +104,24 @@ const config = {
               {
                 label: 'Discord',
                 href: 'https://discordapp.com/invite/AKavNKeDmd',
-              },         
+              },    
+              {
+                label: 'Reddit',
+                href: 'https://www.reddit.com/r/imnazake/',
+              },    
             ],
           },
           {
             title: 'Socials',
             items: [
               {
-                label: 'Youtube',
-                href: 'https://www.youtube.com/@imnazake',
-              },          
-              {
                 label: 'Twitter (X)',
                 href: 'https://x.com/imnazake',
-              }                     
+              },
+              {
+                label: 'Youtube',
+                href: 'https://www.youtube.com/@imnazake',
+              },                        
             ],
           },
           {
@@ -147,7 +151,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Nazake, Inc. Built with Docusaurus.`,
+        //copyright: `Copyright © ${new Date().getFullYear()} Nazake, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.oneLight,

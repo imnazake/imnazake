@@ -28,15 +28,21 @@ Source/YourProject/
 │   ├── LogChannels.h             # Centralized log categories
 │   └── Utility/                  # Macros, helpers, common utilities
 │
-├── Game/
-│   ├── GameMode/                 # GameMode classes
-│   ├── GameState/                # GameState classes
+├── Framework/                    # Game framework classes
+│   ├── GameMode/                 
+│   ├── GameState/                
 │   ├── Player/                   # Player-specific logic
-│   │   ├── PlayerCharacter/
-│   │   ├── PlayerController/
-│   │   └── PlayerState/
+│   │   ├── Character/
+│   │   ├── Controller/
+│   │   └── State/
 │   └── HUD/                     # HUD/UI related to gameplay
 │
+├── AI/                              # Artificial intelligence
+│   ├── Controllers/                 # AAIController subclasses
+│   ├── BehaviorTrees/               # BTs, services, tasks, decorators
+│   ├── Perception/                  # Perception system classes
+│   └── Data/                        # Blackboard data, config
+
 ├── Systems/                     # Self-contained gameplay systems
 │   ├── Inventory/               # Inventory system implementation
 │   │   ├── InventorySystem              # Core system classes
@@ -45,7 +51,7 @@ Source/YourProject/
 │   │   ├── InventoryStructs             # Structs and data structures
 │   │   ├── InventoryDataAssets          # UDataAsset definitions
 │   │   ├── InventoryInterfaces          # Interfaces used by inventory system
-│   │   └── [Other inventory-related files]
+│   │   └── [Etc...]
 │   │
 │   ├── Abilities/               # Gameplay abilities system
 │   │   ├── AbilitySystem 
@@ -54,7 +60,7 @@ Source/YourProject/
 │   │   ├── AbilityStructs
 │   │   ├── AbilityDataAsset
 │   │   ├── AbilityInterfaces
-│   │   └── [Other ability-related files]
+│   │   └── [Etc...]
 │   │
 │   ├── Interaction/            # Player or world interaction system
 │   │   ├── InteractionSystem 
@@ -62,15 +68,23 @@ Source/YourProject/
 │   │   ├── InteractionEnums 
 │   │   ├── InteractionStructs 
 │   │   ├── InteractionInterfaces
-│   │   └── [Other interaction files]
+│   │   └── [Etc...]
 │   │
 │   └── [Other systems…]
+│ 
+├── Input/                           # Enhanced Input support
+│   ├── Config/                      # InputMappingContexts, InputActions
+│   └── Handlers/                    # Custom input logic or wrappers
 │
 ├── UI/
 │   ├── Widgets/                # UUserWidget classes
 │   └── Data/                   # UI-related data assets and enums etc...
+│ 
+├── Editor/                     # Editor tools, widgets, etc.
+│   ├── Widgets/                
+│   └── Data/                   
 │
-├── Dev/                       # Temporary/testing/experimental code
+├── Dev/                       # Temporary/test/dev-only code
 │   └── Sandbox/
 │
 └── YourProject.Build.cs        # Build configuration file
@@ -83,9 +97,11 @@ Source/YourProject/
 Core headers, macros, and logging config. Usually where your precompiled header (`YourProject.h`) and main module file (`YourProject.cpp`) live.
 Contains utilities and helper functions common across your entire project.
 
-### Game
-All player-related gameplay logic — `GameMode`, `GameState`, `HUD`s, and player-specific logic like characters or controllers.
-Handles gameplay flow, rules, and player input management.
+### Framework
+Contains core gameplay framework logic such as `GameMode`, `GameState`, `HUD`, and player-specific classes like `Character`, `Controller`, and `PlayerState`.
+
+### AI
+Holds all AI-related logic including behavior trees, blackboard data, AI controllers, and perception components.
 
 ### Systems
 Self-contained gameplay systems that encapsulate specific game mechanics. Designed to be modular for reuse or plugin conversion.
@@ -102,11 +118,17 @@ Handles player or world interaction systems: interaction logic, components, enum
 - Other systems
 Add more gameplay systems as needed, following the same modular structure.
 
+### Input
+Contains all input-related logic and configuration, such as input mapping contexts, input actions, and input components.
+
 ### UI
 Contains your `UUserWidget` C++ classes and any supporting UI logic or data (e.g. data tables, UI enums).
 
 - **Widgets:** All UUserWidget subclasses for HUD elements, menus, and UI components.
 - **Data:** UI-related data assets, enums, and supporting structures.
+
+### Editor
+Includes tools, custom editors, and development-only assets used to enhance the Unreal Editor experience.
 
 ### Dev
 Temporary or experimental code and sandbox tests. Useful for prototyping and development without affecting production code. Should be excluded from shipping builds.
@@ -128,7 +150,6 @@ Stick to Unreal’s coding standards but you can adopt slight variations for cla
 
 - **1 class per file:** Avoid multiple classes in one file unless nested or private.
 - **Minimal header includes:** Use forward declarations where possible.
-- **Feature folder plugins:** For even better separation, migrate systems into [feature plugins](https://docs.unrealengine.com/en-US/creating-and-managing-plugins-in-unreal-engine/) over time.
 - **Avoid circular dependencies:** Especially between systems — use interfaces or weak references.
 
 ---
