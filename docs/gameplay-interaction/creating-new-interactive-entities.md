@@ -2,84 +2,106 @@
 sidebar_position: 3
 ---
 
-# Creating New Interactive Entities
+# Creating Interactive Entities
 
-This guide walks you through the process of creating and configuring **Interactive Entities** for the **Gameplay Interaction Plugin**. 
-Create new actors for players to interact with easily.
-
----
-
-There are two ways to create interactive entities in your game:
-
-## 1. **Inherit from `AInteractiveEntity`**
-
-You can create a new interactive entity by inheriting from the `AInteractiveEntity` actor that comes with the plugin.
-
-1. Create a new Blueprint or C++ class based on `AInteractiveEntity`.
-2. In your actor Blueprint, add meshes or visuals to design your entity.
-3. To enable outline drawing, override the following methods:
-   - `SupportsDrawingOutline`
-   - `DrawOutline`
-   - `RemoveOutline`
-
-Call `SetRenderCustomDepth(true/false)` on the meshes you want to highlight or remove highlight with outlines.
+An **interactive entity** is any world actor that players can detect, inspect, and interact with. This page covers both approaches: inheriting from the built-in base class or rolling your own actor with the required interfaces.
 
 ---
 
-## 2. **Use Your Own Actor + Interfaces (C++ Only)**
+## Approach 1 — Inherit from `AInteractiveEntity` (Recommended)
 
-If you'd like to convert your own actor into an interactive entity, implement the following interfaces in C++:
+The fastest path. `AInteractiveEntity` already implements both required interfaces and wires up `UGameplayEntityInteractionComponent` and `UOutlineComponent` for you.
 
-- `IOutlineDrawingEntityInterface`
-- `IGameplayInteractiveEntityInterface`
+1. Create a new Blueprint (or C++ class) using `AInteractiveEntity` as the parent.
+2. Add your mesh(es) and set their collision preset to `Interaction` (see [Setup](setup#step-6-collision-setup)).
+3. Tag the mesh component(s) with `Interactive` so the trace system and outline system can identify them.
+4. Select the **Interaction Component** in the Details panel and configure it (see [Configuring the Interaction Component](#configuring-the-interaction-component) below).
+5. In **Outline Component → Default Meshes**, add your visual mesh(es) so the outline system knows which meshes to highlight.
 
-Here's a full example:
+Blueprint extension points on `AInteractiveEntity`:
+
+| Event | Called On | Purpose |
+|---|---|---|
+| `BP_OnPostInitializeComponents` | Server & Client | Run post-init setup |
+| `BP_OnStartInteraction` | Server | Player began interacting |
+| `BP_OnFinishInteraction` | Server | Player finished or cancelled |
+
+---
+
+## Approach 2 — Custom Actor with Interfaces (C++)
+
+If you already have an actor hierarchy you don't want to change, implement the two interfaces directly.
+
+### Required Interfaces
 
 ```cpp
-#include "GameplayTagContainer.h"
-#include "IOutlineDrawingEntityInterface.h"
-#include "Core/GameplayInteractionLibrary.h"
 #include "Core/IGameplayInteractiveEntityInterface.h"
-#include "Core/GameplayEntityInteractionComponent.h"
+#include "Entities/IEntityOutlineInterface.h"
+```
 
-class UAbilitySystemComponent;
+| Interface | Responsibility |
+|---|---|
+| `IGameplayInteractiveEntityInterface` | Exposes options, interaction state, CanInteract / Start / Finish hooks |
+| `IEntityOutlineInterface` | Exposes the `UOutlineComponent` for automatic outline management |
+
+### Minimal C++ Example
+
+```cpp
+// YourInteractableActor.h
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "Core/IGameplayInteractiveEntityInterface.h"
+#include "Entities/IEntityOutlineInterface.h"
+#include "YourInteractableActor.generated.h"
+
+class UGameplayEntityInteractionComponent;
 class UGameplayInteractionOptions;
+class UOutlineComponent;
+class UAbilitySystemComponent;
 
 UCLASS(Blueprintable, BlueprintType)
-class GAMEPLAYINTERACTION_API AMyOwnActor : public AActor, public IOutlineDrawingEntityInterface, public IGameplayInteractiveEntityInterface
+class YOURPROJECT_API AYourInteractableActor : public AActor,
+                                               public IEntityOutlineInterface,
+                                               public IGameplayInteractiveEntityInterface
 {
     GENERATED_BODY()
 
 public:
 
-    AMyOwnActor(const FObjectInitializer& ObjectInitializer);
+    AYourInteractableActor(const FObjectInitializer& ObjectInitializer);
 
-    virtual void DrawOutline_Implementation() const override;
-    virtual void RemoveOutline_Implementation() const override;
-    virtual bool SupportsDrawingOutline_Implementation() const override;
+    // IEntityOutlineInterface
+    virtual bool SupportsOutline_Implementation() const override;
+    virtual UOutlineComponent* GetOutlineComponent() override;
 
-    UFUNCTION(BlueprintPure, Category = "Entity")
-    virtual UGameplayInteractionOptions* GetInteractionOptions() override;
-
-    UFUNCTION(BlueprintPure, Category = "Entity")
-    virtual UGameplayEntityInteractionComponent* GetInteractionComponent() override;
-
-    UFUNCTION(BlueprintPure, Category = "Entity")
+    // IGameplayInteractiveEntityInterface
+    virtual UGameplayInteractionOptions*        GetInteractionOptions() override;
+    virtual UGameplayEntityInteractionComponent* GetEntityInteractionComponent() override;
     virtual bool CanInteract(UAbilitySystemComponent* Player, FGameplayTagContainer& FailureTags) override;
-
-    UFUNCTION(BlueprintPure, Category = "Entity")
-    FGameplayInteractionOption GetInteractionOptionByIndex(int32 OptionIndex);
+    virtual void StartInteraction(UAbilitySystemComponent* Player, UGameplayInteractionOption* Option) override;
+    virtual void FinishInteraction(UAbilitySystemComponent* Player, UGameplayInteractionOption* Option, bool bWasCancelled) override;
 
 protected:
 
-    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Entity")
+    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Interaction")
     TObjectPtr<UGameplayEntityInteractionComponent> InteractionComponent;
+
+    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Outline")
+    TObjectPtr<UOutlineComponent> OutlineComponent;
 };
 ```
 
-
 ```cpp
-AMyOwnActor::AMyOwnActor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
+// YourInteractableActor.cpp
+#include "YourInteractableActor.h"
+#include "Core/GameplayEntityInteractionComponent.h"
+#include "Core/GameplayInteractionOptions.h"
+#include "Entities/OutlineComponent.h"
+
+AYourInteractableActor::AYourInteractableActor(const FObjectInitializer& ObjectInitializer)
+    : Super(ObjectInitializer)
 {
     bReplicates = true;
     SetReplicatingMovement(true);
@@ -87,105 +109,176 @@ AMyOwnActor::AMyOwnActor(const FObjectInitializer& ObjectInitializer) : Super(Ob
 
     InteractionComponent = CreateDefaultSubobject<UGameplayEntityInteractionComponent>(TEXT("InteractionComponent"));
     InteractionComponent->SetIsReplicated(true);
+
+    // OutlineComponent is cosmetic — no need to replicate
+    OutlineComponent = CreateDefaultSubobject<UOutlineComponent>(TEXT("OutlineComponent"));
+    OutlineComponent->SetIsReplicated(false);
 }
 
-void AMyOwnActor::DrawOutline_Implementation() const
-{
-    // Define which meshes should display outlines.
-}
-
-void AMyOwnActor::RemoveOutline_Implementation() const
-{
-    // Remove outlines from the defined meshes.
-}
-
-bool AMyOwnActor::SupportsDrawingOutline_Implementation() const
+bool AYourInteractableActor::SupportsOutline_Implementation() const
 {
     return true;
 }
 
-UGameplayInteractionOptions* AMyOwnActor::GetInteractionOptions()
+UOutlineComponent* AYourInteractableActor::GetOutlineComponent()
 {
-    return InteractionComponent->GetInteractionOptions();
+    return OutlineComponent;
 }
 
-UGameplayEntityInteractionComponent* AMyOwnActor::GetInteractionComponent()
+UGameplayInteractionOptions* AYourInteractableActor::GetInteractionOptions()
+{
+    return InteractionComponent ? InteractionComponent->GetInteractionOptions() : nullptr;
+}
+
+UGameplayEntityInteractionComponent* AYourInteractableActor::GetEntityInteractionComponent()
 {
     return InteractionComponent;
 }
 
-bool AMyOwnActor::CanInteract(UAbilitySystemComponent* Player, FGameplayTagContainer& FailureTags)
+bool AYourInteractableActor::CanInteract(UAbilitySystemComponent* Player, FGameplayTagContainer& FailureTags)
 {
-    return InteractionComponent->CanInteract(Player, FailureTags);
+    return InteractionComponent && InteractionComponent->CanInteract(Player, FailureTags);
 }
 
-FGameplayInteractionOption AMyOwnActor::GetInteractionOptionByIndex(const int32 OptionIndex)
+void AYourInteractableActor::StartInteraction(UAbilitySystemComponent* Player, UGameplayInteractionOption* Option)
 {
-    if (!InteractionComponent->GetInteractionOptions())
+    if (InteractionComponent)
     {
-        return FGameplayInteractionOption::EmptyOption;
+        InteractionComponent->StartInteraction(Player, Option);
     }
+}
 
-    const TArray<FGameplayInteractionOption>& Options = InteractionComponent->GetInteractionOptions()->GetOptions();
-
-    if (Options.IsValidIndex(OptionIndex))
+void AYourInteractableActor::FinishInteraction(UAbilitySystemComponent* Player, UGameplayInteractionOption* Option, bool bWasCancelled)
+{
+    if (InteractionComponent)
     {
-        return Options[OptionIndex];
+        InteractionComponent->FinishInteraction(Player, Option, bWasCancelled);
     }
-
-    return FGameplayInteractionOption::EmptyOption;
 }
 ```
 
 ---
 
-## 3. Configure Your Interactive Entity
+## Configuring the Interaction Component
 
-After adding meshes and visuals to your interactive actor:
+Select the **Interaction Component** in the entity's Details panel. The key properties are:
 
-- **Select the `InteractionComponent`** in the Details panel.
-- Choose an **Interaction Policy** that matches the desired behavior (e.g., Default, Specific Number Of Players, Specific Players).
-- Under the component settings, **assign the interaction options** that will be granted to the player when they approach or interact.
+### Interaction Policy
 
-The table below outlines the available **Interaction Policies** you can assign to an interactive entity.
+Controls *who* can interact and *how many* players simultaneously.
 
-| **Policy Name**             | **Description**                                                                                                                                               | **Notes**                                                                                                                                                            |
-|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Default`                  | Unlimited interactions; any player can interact at any time without restrictions.                                                                             | No special handling required.                                                                                                                                        |
-| `SpecificNumberOfPlayers` | Allows a limited number of players to interact simultaneously, as specified in the component settings.                                                        | Players beyond the limit must wait until others finish interacting.                                                                                                   |
-| `SpecificPlayers`         | Only specific players can interact based on their `UniqueNetId`.                                                                                              | Use `RegisterPlayerForInteraction` and `UnregisterPlayerFromInteraction` **on the server** to control access. If removing an active interactor, call `FinishInteraction`. |
+| Policy | Behaviour |
+|---|---|
+| **Default** | Any player can interact. Blocks re-entry while the same player is already interacting. |
+| **SpecificNumberOfPlayers** | At most N players can interact simultaneously. Set `MaxNumberOfPlayers`. Additional players receive a `Gameplay.Interaction.Busy` failure tag. |
+| **SpecificPlayers** | Only players explicitly registered via `RegisterPlayerForInteraction` can interact (or the inverse with `DenySpecifiedPlayersOnly`). |
 
-> ⚠️ **Important**:  
-> - `RegisterPlayerForInteraction` and `UnregisterPlayerFromInteraction` must be called **on the authority/server only**.  
-> - If you unregister a player currently interacting, **call `FinishInteraction`** to cleanly end their interaction state.
+To create a custom policy, subclass `UGameplayInteractionPolicy` and override `CanInteract`.
 
-:::info
-You can also create custom interaction policies by inheriting from the `UGameplayInteractionPolicy` C++ class.
-This allows you to implement custom rules and behavior for interaction access, tailored to your game’s specific needs.
+#### Registering players at runtime (SpecificPlayers policy)
+
+```cpp
+// Call on server only
+InteractionComponent->RegisterPlayerForInteraction(PlayerASC);
+
+// If unregistering while the player is actively interacting, also call:
+InteractionComponent->FinishInteraction(PlayerASC, Option, /*bWasCancelled=*/ true);
+InteractionComponent->UnregisterPlayerFromInteraction(PlayerASC);
+```
+
+### Interaction Options
+
+Assign a `UGameplayInteractionOptions` data asset. This asset lists every `UGameplayInteractionOption` available on this entity. See [Creating Interaction Options](creating-new-interaction-options) for how to build them.
+
+### Blocking Tags
+
+The component ships with a default set of blocking tags (`Unauthorized`, `Blocked`, `Ongoing`, `Busy`, `Cooldown`, `Disabled`). Any tag from this set found on the entity's dynamic tag container will deny all interactions. You can extend this set in the Details panel.
+
+### Dynamic Tags
+
+You can set initial dynamic tags on the entity from the Details panel (`DynamicTags`). These are replicated and are checked against the blocking tag set in `CanInteract`. Modify them at runtime:
+
+```cpp
+// Grant a tag (e.g. mark the entity as disabled after use)
+InteractionComponent->GrantDynamicTags(FGameplayTagContainer(TAG_Gameplay_Interaction_Disabled));
+
+// Revoke a tag (e.g. re-enable the entity)
+InteractionComponent->RevokeDynamicTags(FGameplayTagContainer(TAG_Gameplay_Interaction_Disabled));
+```
+
+Both functions replicate to clients automatically and fire `OnDynamicTagsChangedDelegate`.
+
+---
+
+## Configuring the Outline Component
+
+Select the **Outline Component** in the Details panel.
+
+### Default Meshes
+
+Add all mesh components you want to receive outline stencil updates. When the player looks at the entity, the outline system will call `SetOutlineState` on these meshes.
+
+:::tip
+If your entity has multiple interactable sub-components (e.g. individual buttons), you can leave `DefaultMeshes` empty and pass the specific hit mesh to `SetOutlineState` from the interaction component directly.
 :::
 
-> To create a new interaction options asset, refer to [this page](creating-new-interaction-options).
+### Stencil Values
+
+Map each `EOutlineState` to the stencil value your post-process material reads. Defaults are:
+
+| State | Stencil | Meaning |
+|---|---|---|
+| `None` | 0 | No outline |
+| `Available` | 1 | Player can interact |
+| `Unavailable` | 2 | Entity in view but blocked/requirements not met |
+| `Disabled` | 3 | Entity is hard-locked |
+
+### Per-State Toggles
+
+Disable `bAllowUnavailableState` if you don't want a "can't interact" outline on this entity. Disable `bAllowDisabledState` to hide the entity's disabled state from the player.
+
+### Require Interactive Tag
+
+When `bRequireInteractiveTag` is `true` (default), only mesh components tagged `Interactive` are eligible for outline rendering. This prevents accidentally highlighting non-interactable parts of a complex mesh hierarchy.
 
 ---
 
-## 4. Configure Mesh Collision Settings for Interaction
+## Responding to Interaction Events
 
-Make sure the correct meshes are setup to handle player interaction:
+### From Blueprint (`AInteractiveEntity` subclass)
 
-- Select the **mesh(es)** you want the player to interact with (e.g., a door mesh).
-- Set their **collision preset** to:
-  - `Interaction` (recommended), or
-  - `Custom` and configure manually:
-    - Set **Object Type** to `InteractiveEntity`.
-    - Ensure the **InteractiveEntity** collision response is set to **Block**.
-    - Disable collision for other unused channels, if needed.
+Override `BP_OnStartInteraction` and `BP_OnFinishInteraction`. These fire on the **server** when a player starts or finishes an interaction.
 
-📌 This ensures the interaction trace system can detect the mesh when the player looks at it.
+```text
+BP_OnStartInteraction(PlayerASC, Option) → open the door
+BP_OnFinishInteraction(PlayerASC, Option, bWasCancelled) → play finish sound
+```
 
-> Refer to the image below for an example collision setup.
+### From C++ (Custom Actor)
 
-![Image](./images/gi_coll_settings.png)
+Override `StartInteraction` and `FinishInteraction` and add your logic before or after calling the base `InteractionComponent` functions.
+
+### Binding to Component Delegates
+
+```cpp
+// Called whenever the interactor list changes (replicated)
+InteractionComponent->OnInteractorsUpdatedDelegate.AddDynamic(this, &ThisClass::HandleInteractorsChanged);
+
+// Called when dynamic tags change (replicated)
+InteractionComponent->OnDynamicTagsChangedDelegate.AddDynamic(this, &ThisClass::HandleTagsChanged);
+```
 
 ---
 
-With either approach, you'll have full control over how your interactive entities look, behave, and react to player interaction.
+## Multi-Component Entities
+
+Entities with multiple distinct interactable parts (e.g. a control panel with several buttons) use `RequiredComponentTag` on each `UGameplayInteractionOption` to route options to the correct mesh:
+
+1. Tag each sub-mesh differently (e.g. `ButtonA`, `ButtonB`).
+2. On each `UGameplayInteractionOption`, set `RequiredComponentTag` to the matching mesh tag.
+3. The player-side component automatically filters options based on which tagged mesh the trace hit.
+
+```cpp
+// Utility to retrieve options for a specific component tag
+TArray<UGameplayInteractionOption*> ButtonAOptions = GetInteractionOptionsForComponentTag(TEXT("ButtonA"));
+```

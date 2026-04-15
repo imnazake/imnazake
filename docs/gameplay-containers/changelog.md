@@ -4,6 +4,8 @@ sidebar_position: 3
 
 # Change Logs
 
+---
+
 ## Version 1.4
 
 :::info
